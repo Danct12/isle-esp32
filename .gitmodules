@@ -1,0 +1,6 @@
+[submodule "components/iniparser/iniparser"]
+	path = components/iniparser/iniparser
+	url = https://gitlab.com/iniparser/iniparser.git
+[submodule "isle-portable"]
+	path = isle-portable
+	url = https://github.com/isledecomp/isle-portable.git

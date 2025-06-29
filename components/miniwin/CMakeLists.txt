@@ -20,20 +20,23 @@ idf_component_register(
         "miniwin/src/internal/meshutils.cpp"
 
         # D3DRM backends
-        #"src/d3drm/backends/sdl3gpu/renderer.cpp"
-        #"src/d3drm/backends/sdl3gpu/shaders/generated/ShaderIndex.cpp"
+        #"miniwin/src/d3drm/backends/sdl3gpu/renderer.cpp"
+        #"miniwin/src/d3drm/backends/sdl3gpu/shaders/generated/ShaderIndex.cpp"
         "miniwin/src/d3drm/backends/software/renderer.cpp"
-    INCLUDE_DIRS "miniwin/include"
-    PRIV_INCLUDE_DIRS "miniwin/src/internal"
     REQUIRES georgik__sdl
+    INCLUDE_DIRS "miniwin/include"
+    PRIV_INCLUDE_DIRS
+        "miniwin/include"
+        "miniwin/src/internal"
 )
 
+# (continuation of the comment in lego1 cmake)
+# However, warnings in miniwin should be fixed as this is a
+# modern, freshly written code (?).
 target_compile_options(${COMPONENT_LIB} PRIVATE
     -Wno-reorder
     -Wno-maybe-uninitialized
     -Wno-parentheses
-    -Wno-format
-    -Wno-switch
 )
 
 target_compile_definitions(${COMPONENT_LIB} PUBLIC MINIWIN)

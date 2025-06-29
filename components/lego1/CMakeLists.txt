@@ -249,18 +249,27 @@ idf_component_register(
         "LEGO1/lego/legoomni/src/worlds/registrationbook.cpp"
         "LEGO1/lego/legoomni/src/worlds/score.cpp"
         "LEGO1/modeldb/modeldb.cpp"
-    PRIV_REQUIRES smacker miniwin
+    PRIV_REQUIRES miniaudio miniwin smacker
+    INCLUDE_DIRS
+        "../../isle-portable/util"
+        "LEGO1"
+        "LEGO1/lego/legoomni/include"
+        "LEGO1/lego/legoomni/include/actions"
+        "LEGO1/lego/sources"
+        "LEGO1/omni/include"
     PRIV_INCLUDE_DIRS
-        "../../isle-portable/3rdparty/miniaudio"
         "../../isle-portable/3rdparty/vec"
         "../../isle-portable/util"
         "LEGO1"
-        "LEGO1/omni/include"
-        "LEGO1/lego/sources"
         "LEGO1/lego/legoomni/include"
         "LEGO1/lego/legoomni/include/actions"
+        "LEGO1/lego/sources"
+        "LEGO1/omni/include"
 )
 
+# These warnings will be left ignored, mainly due to
+# this being a 30 years old codebase and fixing all of them
+# might break something somewhere.
 target_compile_options(${COMPONENT_LIB} PRIVATE
     -Wno-address
     -Wno-delete-non-virtual-dtor
@@ -270,4 +279,5 @@ target_compile_options(${COMPONENT_LIB} PRIVATE
     -Wno-switch
     -Wno-unknown-pragmas
     -Wno-unused-label
+    -Wno-uninitialized
 )
